@@ -24,46 +24,6 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/auth/token": {
-            "post": {
-                "description": "Authenticates a user and provides a JWT to Authorize API calls",
-                "produces": [
-                    "application/json"
-                ],
-                "summary": "Provides a JSON Web Token",
-                "operationId": "Authentication",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Username",
-                        "name": "username",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "Password",
-                        "name": "password",
-                        "in": "formData",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/dto.JWT"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/dto.Response"
-                        }
-                    }
-                }
-            }
-        },
         "/videos": {
             "get": {
                 "security": [
@@ -265,14 +225,6 @@ var doc = `{
         }
     },
     "definitions": {
-        "dto.JWT": {
-            "type": "object",
-            "properties": {
-                "token": {
-                    "type": "string"
-                }
-            }
-        },
         "dto.Response": {
             "type": "object",
             "properties": {

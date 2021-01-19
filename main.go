@@ -35,12 +35,12 @@ func main() {
 
 		// Swagger 2.0 Meta Information
 
-		docs.SwaggerInfo.Title = "Pragmatic Reviews - Video API"
-		docs.SwaggerInfo.Description = "Pragmatic Reviews - Youtube Video API."
-		docs.SwaggerInfo.Version = "1.0"
-		docs.SwaggerInfo.Host = "pragmatic-video-app.herokuapp.com"
-		docs.SwaggerInfo.BasePath = "/api/v1"
-		docs.SwaggerInfo.Schemes = []string{"https"}
+		docs.SwaggerInfo.Title = "Pacticas Go2 - Video API"
+		docs.SwaggerInfo.Description = "Pacticas Go2 "
+		docs.SwaggerInfo.Version = "2.0"
+		docs.SwaggerInfo.Host = "localhost:8080"
+		docs.SwaggerInfo.BasePath = "/api"
+		docs.SwaggerInfo.Schemes = []string{"http"}
 	defer videoRepository.CloseDB()
 	setupLogOutPut()
 	server := gin.New()
@@ -52,7 +52,7 @@ func main() {
 	server.LoadHTMLGlob("templates/*.html")
 
 	// Login Endpoint: Authentication + Token creation
-	server.POST("/login", func(ctx *gin.Context) {
+/*	server.POST("/login", func(ctx *gin.Context) {
 		token := loginController.Login(ctx)
 		if token != "" {
 			ctx.JSON(http.StatusOK, gin.H{
@@ -61,10 +61,20 @@ func main() {
 		} else {
 			ctx.JSON(http.StatusUnauthorized, nil)
 		}
-	})
+	})*/
 
 	apiRoutes := server.Group("/api")
-	{
+	{	// Login Endpoint: Authentication + Token creation
+		server.POST("/login", func(ctx *gin.Context) {
+			token := loginController.Login(ctx)
+			if token != "" {
+				ctx.JSON(http.StatusOK, gin.H{
+					"token": token,
+				})
+			} else {
+				ctx.JSON(http.StatusUnauthorized, nil)
+			}
+		})
 		apiRoutes.GET("/videos", func(context *gin.Context) {
 			context.JSON(200, videoController.FindAll())
 		})

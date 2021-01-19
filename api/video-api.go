@@ -33,7 +33,8 @@ func NewVideoAPI(loginController controller.LoginController,
 // @Param password formData string true "Password"
 // @Success 200 {object} dto.JWT
 // @Failure 401 {object} dto.Response
-// @Router /auth/token [post]
+// @Router /login [post]
+
 func (api *VideoApi) Authenticate(ctx *gin.Context) {
 	token := api.loginController.Login(ctx)
 	if token != "" {

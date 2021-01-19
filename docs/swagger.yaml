@@ -1,9 +1,4 @@
 definitions:
-  dto.JWT:
-    properties:
-      token:
-        type: string
-    type: object
   dto.Response:
     properties:
       message:
@@ -45,33 +40,6 @@ definitions:
 info:
   contact: {}
 paths:
-  /auth/token:
-    post:
-      description: Authenticates a user and provides a JWT to Authorize API calls
-      operationId: Authentication
-      parameters:
-      - description: Username
-        in: formData
-        name: username
-        required: true
-        type: string
-      - description: Password
-        in: formData
-        name: password
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/dto.JWT'
-        "401":
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/dto.Response'
-      summary: Provides a JSON Web Token
   /videos:
     get:
       consumes:

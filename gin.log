@@ -5,10 +5,10 @@
 [GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
 [GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
 [GIN-debug] Loaded HTML Templates (4): 
-	- index.html
 	- 
 	- footer.html
 	- header.html
+	- index.html
 
 [GIN-debug] POST   /login                    --> main.main.func1 (3 handlers)
 [GIN-debug] GET    /api/videos               --> main.main.func2 (3 handlers)
@@ -18,10 +18,7 @@
 [GIN-debug] GET    /view/videos              --> gitlab.com/pragmaticreviews/golang-gin-poc/controller.VideoController.ShowAll-fm (3 handlers)
 [GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
 [GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2021/01/19 - 10:22:26 | 404 |            0s |             ::1 | GET      "/swagger/videos"
-[GIN] 2021/01/19 - 10:22:46 | 200 |      1.0221ms |             ::1 | GET      "/swagger/index.html"
-[GIN] 2021/01/19 - 10:22:46 | 200 |       999.5µs |             ::1 | GET      "/swagger/swagger-ui.css"
-[GIN] 2021/01/19 - 10:22:46 | 200 |     21.0156ms |             ::1 | GET      "/swagger/swagger-ui-standalone-preset.js"
-[GIN] 2021/01/19 - 10:22:46 | 200 |    168.9767ms |             ::1 | GET      "/swagger/swagger-ui-bundle.js"
-[GIN] 2021/01/19 - 10:22:47 | 200 |      3.9942ms |             ::1 | GET      "/swagger/doc.json"
-[GIN] 2021/01/19 - 10:22:48 | 200 |    364.9936ms |             ::1 | GET      "/swagger/favicon-32x32.png"
+[GIN] 2021/01/19 - 11:22:13 | 400 |      2.0043ms |             ::1 | POST     "/api/videos"
+[GIN] 2021/01/19 - 11:23:04 | 200 |            0s |             ::1 | GET      "/api/videos"
+[GIN] 2021/01/19 - 11:24:10 | 400 |            0s |             ::1 | POST     "/api/videos"
+[GIN] 2021/01/19 - 11:24:48 | 200 |      1.0032ms |             ::1 | GET      "/api/videos"
