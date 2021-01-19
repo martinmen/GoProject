@@ -1,6 +1,5 @@
 package dto
 
-type Credentials struct {
-	Username string `form:"username"`
-	Password string `form:"password"`
+type Response struct {
+	Message string `json:"message"`
 }

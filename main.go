@@ -9,6 +9,10 @@ import (
 	"gitlab.com/pragmaticreviews/golang-gin-poc/controller"
 	"gitlab.com/pragmaticreviews/golang-gin-poc/repository"
 	"gitlab.com/pragmaticreviews/golang-gin-poc/service"
+	"gitlab.com/pragmaticreviews/golang-gin-poc/docs" 
+
+	swaggerFiles "github.com/swaggo/files"     // swagger embed files
+	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 )
 
 var (
@@ -24,8 +28,19 @@ func setupLogOutPut() {
 	f, _ := os.Create("gin.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 }
-
+// @securityDefinitions.apikey bearerAuth
+// @in header
+// @name Authorization
 func main() {
+
+		// Swagger 2.0 Meta Information
+
+		docs.SwaggerInfo.Title = "Pragmatic Reviews - Video API"
+		docs.SwaggerInfo.Description = "Pragmatic Reviews - Youtube Video API."
+		docs.SwaggerInfo.Version = "1.0"
+		docs.SwaggerInfo.Host = "pragmatic-video-app.herokuapp.com"
+		docs.SwaggerInfo.BasePath = "/api/v1"
+		docs.SwaggerInfo.Schemes = []string{"https"}
 	defer videoRepository.CloseDB()
 	setupLogOutPut()
 	server := gin.New()
@@ -85,6 +100,9 @@ func main() {
 	{
 		viewRoutes.GET("/videos", videoController.ShowAll)
 	}
+
+	server.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 
 	server.Run(":8080")
 }
