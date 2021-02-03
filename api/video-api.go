@@ -10,11 +10,11 @@ import (
 
 type VideoApi struct {
 	loginController controller.LoginController
-	videoController controller.VideoController
+	videoController controller.ExcerciseController
 }
 
 func NewVideoAPI(loginController controller.LoginController,
-	videoController controller.VideoController) *VideoApi {
+	videoController controller.ExcerciseController) *VideoApi {
 	return &VideoApi{
 		loginController: loginController,
 		videoController: videoController,

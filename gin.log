@@ -5,20 +5,31 @@
 [GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
 [GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
 [GIN-debug] Loaded HTML Templates (4): 
-	- 
 	- footer.html
 	- header.html
 	- index.html
+	- 
 
 [GIN-debug] POST   /login                    --> main.main.func1 (3 handlers)
-[GIN-debug] GET    /api/videos               --> main.main.func2 (3 handlers)
-[GIN-debug] POST   /api/videos               --> main.main.func3 (3 handlers)
-[GIN-debug] PUT    /api/videos/:id           --> main.main.func4 (3 handlers)
-[GIN-debug] DELETE /api/videos/:id           --> main.main.func5 (3 handlers)
-[GIN-debug] GET    /view/videos              --> gitlab.com/pragmaticreviews/golang-gin-poc/controller.VideoController.ShowAll-fm (3 handlers)
+[GIN-debug] GET    /api/exercises            --> main.main.func2 (3 handlers)
+[GIN-debug] POST   /api/exercises            --> main.main.func3 (3 handlers)
+[GIN-debug] PUT    /api/exercises/:id        --> main.main.func4 (3 handlers)
+[GIN-debug] DELETE /api/exercises/:id        --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /view/exercises           --> gitlab.com/pragmaticreviews/golang-gin-poc/controller.ExcerciseController.ShowAll-fm (3 handlers)
 [GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
 [GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2021/01/19 - 11:22:13 | 400 |      2.0043ms |             ::1 | POST     "/api/videos"
-[GIN] 2021/01/19 - 11:23:04 | 200 |            0s |             ::1 | GET      "/api/videos"
-[GIN] 2021/01/19 - 11:24:10 | 400 |            0s |             ::1 | POST     "/api/videos"
-[GIN] 2021/01/19 - 11:24:48 | 200 |      1.0032ms |             ::1 | GET      "/api/videos"
+[GIN] 2021/01/30 - 19:43:36 | 200 |      2.0002ms |             ::1 | GET      "/api/exercises"
+[GIN] 2021/01/30 - 19:52:17 | 200 |     96.0044ms |             ::1 | GET      "/api/exercises"
+[GIN] 2021/01/30 - 19:54:00 | 200 |      1.0023ms |             ::1 | GET      "/api/exercises"
+[GIN] 2021/01/30 - 19:54:03 | 200 |            0s |             ::1 | GET      "/api/exercises"
+[GIN] 2021/01/30 - 19:54:59 | 200 |      1.0118ms |             ::1 | GET      "/api/exercises"
+[GIN] 2021/01/30 - 19:55:18 | 200 |            0s |             ::1 | GET      "/api/exercises"
+[GIN] 2021/01/30 - 20:08:57 | 200 |      23.012ms |             ::1 | GET      "/api/exercises"
+[GIN] 2021/01/30 - 20:09:27 | 200 |      1.0001ms |             ::1 | GET      "/api/exercises"
+[GIN] 2021/01/30 - 20:10:28 | 200 |      1.9983ms |             ::1 | GET      "/api/exercises"
+[GIN] 2021/02/01 - 10:28:50 | 404 |            0s |    192.168.1.40 | GET      "/"
+[GIN] 2021/02/01 - 10:29:05 | 404 |            0s |    192.168.1.40 | GET      "/HNAP1/"
+[GIN] 2021/02/02 - 13:04:25 | 404 |            0s |    192.168.1.40 | GET      "/"
+[GIN] 2021/02/02 - 13:04:44 | 404 |            0s |    192.168.1.40 | GET      "/HNAP1/"
+[GIN] 2021/02/03 - 13:13:25 | 404 |            0s |    192.168.1.40 | GET      "/"
+[GIN] 2021/02/03 - 13:13:46 | 404 |            0s |    192.168.1.40 | GET      "/HNAP1/"

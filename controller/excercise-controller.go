@@ -11,20 +11,20 @@ import (
 	"gitlab.com/pragmaticreviews/golang-gin-poc/validators"
 )
 
-type VideoController interface {
-	FindAll() []entity.Video
+type ExcerciseController interface {
+	FindAll() []entity.Exercise
 	Save(context *gin.Context) error
 	Update(context *gin.Context) error
 	Delete(context *gin.Context) error
 	ShowAll(context *gin.Context)
 }
 type controller struct {
-	service service.VideoService
+	service service.ExerciseService
 }
 
 var validate *validator.Validate
 
-func New(service service.VideoService) VideoController {
+func New(service service.ExerciseService) ExcerciseController {
 	validate = validator.New()
 	validate.RegisterValidation("is-cool", validators.ValidateCoolTitle)
 
@@ -33,28 +33,28 @@ func New(service service.VideoService) VideoController {
 	}
 }
 
-func (c *controller) FindAll() []entity.Video {
+func (c *controller) FindAll() []entity.Exercise {
 	return c.service.FindAll()
 }
 
 func (c *controller) Save(context *gin.Context) error {
-	var video entity.Video
-	err := context.ShouldBindJSON(&video)
+	var exercise entity.Exercise
+	err := context.ShouldBindJSON(&exercise)
 	if err != nil {
 		return err
 	}
-	err = validate.Struct(video)
+	err = validate.Struct(exercise)
 	if err != nil {
 		return err
 	}
-	c.service.Save(video)
+	c.service.Save(exercise)
 	return nil
 }
 
 func (c *controller) Update(context *gin.Context) error {
 
-	var video entity.Video
-	err := context.ShouldBindJSON(&video)
+	var exercise entity.Exercise
+	err := context.ShouldBindJSON(&exercise)
 	if err != nil {
 		return err
 	}
@@ -63,32 +63,32 @@ func (c *controller) Update(context *gin.Context) error {
 	if err != nil {
 		return err
 	}
-	video.ID = id
+	exercise.ID = id
 
-	err = validate.Struct(video)
+	err = validate.Struct(exercise)
 	if err != nil {
 		return err
 	}
-	c.service.Update(video)
+	c.service.Update(exercise)
 	return nil
 
 }
 func (c *controller) Delete(context *gin.Context) error {
-	var video entity.Video
+	var exercise entity.Exercise
 	id, err := strconv.ParseUint(context.Param("id"), 0, 0)
 	if err != nil {
 		return err
 	}
-	video.ID = id
-	c.service.Delete(video)
+	exercise.ID = id
+	c.service.Delete(exercise)
 	return nil
 }
 
 func (c *controller) ShowAll(context *gin.Context) {
-	videos := c.service.FindAll()
+	exercise := c.service.FindAll()
 	data := gin.H{
-		"title":  "Video Page",
-		"videos": videos,
+		"title":    "Exercise Page",
+		"exercise": exercise,
 	}
 	context.HTML(http.StatusOK, "index.html", data)
 }
